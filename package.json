@@ -1,11 +1,24 @@
 {
   "name": "iot-mongo-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "ERROR: No README data found!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DouBlelinee/iot-mongo-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DouBlelinee/iot-mongo-server/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.3",
+    "node-restful": "^0.2.2"
+  }
 }
