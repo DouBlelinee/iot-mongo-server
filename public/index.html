@@ -19,6 +19,10 @@
           </div>        
           </form>
           <button ng-click="scope.query()">Chart</button>
+
+          <div ng-repeat="data in scope.data">
+			    		{{data}}
+				  	</div>
            </div> 
       </body>
  </html>

@@ -11,7 +11,10 @@ angular.module('iot', [])
       }
    		scope.query  = function() {
  			$http.get('/api/iot').success(function (response) {
-    	console.log(response)
+ 				console.log(response)
+ 				scope.data = response
+    	
+
     })
 
 }
