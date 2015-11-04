@@ -1,5 +1,5 @@
-angular.module('todoApp', [])
-      .controller('TodoListController', function () {
+angular.module('iot', [])
+      .controller('IotController', function () {
         var scope = this
        scope.name = 'Chai'
       })

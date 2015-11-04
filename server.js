@@ -6,6 +6,9 @@ var Model = require('./models/iot.js')
 mongoose.connect('mongodb://localhost/db')
 
 var app = express()
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
 app.use(express.static('public'))
 
 app.post('/', function (req, res) {
@@ -18,7 +21,8 @@ app.post('/', function (req, res) {
     }
   })
 })
-app.get('/api/iot', function (req, res, next) {
+
+app.get('/', function (req, res, next) {
   Model.find({}).exec(function (err, results) {
     if (err) {
       res.status(500).send(err)
@@ -27,8 +31,6 @@ app.get('/api/iot', function (req, res, next) {
     }
   })
 })
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html')
