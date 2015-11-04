@@ -1,9 +1,9 @@
 var express = require('express')
 var router = express.Router()
 
-var Grade = require('../models/iot')
+var iot = require('../models/iot')
 
-Grade.methods(['get', 'put', 'post', 'delete'])
-Grade.register(router, '/iot')
+iot.methods(['get', 'put', 'post', 'delete'])
+iot.register(router, '/iot')
 
 module.exports = router
