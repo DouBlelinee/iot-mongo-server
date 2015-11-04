@@ -1,6 +1,6 @@
-angular.module('app', [])
-  .controller('AppController', function () {
-    var scope = this
-    scope.name = 'CoFen'
-  })
+angular.module('todoApp', [])
+      .controller('TodoListController', function () {
+        var scope = this
+       scope.name = 'Chai'
+      })
 

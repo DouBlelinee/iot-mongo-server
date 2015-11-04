@@ -10,16 +10,16 @@ for (var i = 0; i < 10; i++) {
 }
 
 function postIOT (id) {
-  var timestapm = Math.floor(Date.now() / 1000)
+  var timestamp = Math.floor(Date.now() / 1000)
   for (var i = 100; i >= 0; i--) {
-    post(id, timestapm)
-    timestapm = timestapm - 3600
+    post(id, timestamp)
+    timestamp = timestamp - 3600
   }
 }
 
-function post (id, timestapm) {
+function post (id, timestamp) {
   var data = {
-    'timestamp': timestapm,
+    'timestamp': timestamp,
     'iot_id': id,
     'temperature': ran(0, 60),
     'relative_humidity': ran(1, 100)
