@@ -16,6 +16,15 @@ app.post('/',function(req,res){
       }
     })
 })
+app.get('/', function (req, res, next) {
+    model.find({}).exec(function (err, results) {
+      if (err) {
+        res.status(500).send(err)
+      } else {
+        res.send(results)
+      }
+    })
+  })
 
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
