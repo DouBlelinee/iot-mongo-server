@@ -11,6 +11,7 @@
       <body>
       <center><h2>Internet Of Things</h2></center>
         <div ng-controller="IotController as scope">
+        <div ng-init="scope.query()">
           <form ng-submit ="scope.insert(value)">
      		<div class="form-group">
          Iot_ID  <br><input type="text" class="form-control" ng-model ="value.iot_id" placeholder="Type here."><br>
@@ -18,12 +19,19 @@
          Relative_Humidity  <br><input type="text" class="form-control" ng-model ="value.relative_Humidity" placeholder="Type here."><br><button type="submit" class="btn btn-success">Insert</button>
           </div>        
           </form>
-          <button ng-click="scope.query()">Chart</button>
+         
+	
+		<table class="table table-hover">
+		<tr><td>IOT_ID</td><td>Relative_Humidity</td><td>Timestamp</td></tr>
+		<tr ng-repeat="data in scope.data">
+			    		<td>{{data.iot_id}}</td>
+			    		<td>{{data.relative_humidity}}</td>
+			    		<td>{{data.timestamp}}</td>
 
-          <div ng-repeat="data in scope.data">
-			    		{{data}}
-				  	</div>
+			</tr>
+		</table>
            </div> 
+           </div>
       </body>
  </html>
 
