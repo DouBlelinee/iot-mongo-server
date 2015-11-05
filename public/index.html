@@ -35,6 +35,17 @@
 			    		<td class="col-sm-2">{{data.temperature}}</td>
 			    		<td class="col-sm-2">{{data.relative_humidity}}</td>
 			    		<td class="col-sm-4">{{scope.toTime(data.timestamp)}}</td>
+			    		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="scope.delete(data._id,$index)"></button></td>	
+				  	</tr>
+			    </tbody>
+			  </table>
+
+		
+
+
+</body>
+</html>
+
 
 			</tr>
 		</table>

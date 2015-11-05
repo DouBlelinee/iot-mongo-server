@@ -23,6 +23,15 @@ angular.module('iot', [])
  		scope.toTime = function(date){
     return moment(date).format('MMMM Do YYYY , h:mm:ss a')
 }
-
+scope.delete = function(id,index){
+        console.log(id)
+        $http.delete('/api/iot/'+id)
+          .success(function(data) {
+            scope.data.splice(index,1)           
+          })
+          .error(function(data) {
+            console.log('Error: ' + data)
+          })
+    }
 })
-  
+       
