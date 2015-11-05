@@ -35,12 +35,12 @@ angular.module('iot', [])
     }
 
     scope.graph = function(){
-    	console.log('eeeee')
       $http.get('/api/iot')
               .then(function success (response) {
+              	console.log('eeeee')
          
                   var data = {
-                              labels: ["January", "February", "March", "April", "May", "June", "July"],
+                              labels: [],
                               datasets: [
                                   {
                                       label: "temperature",
@@ -63,9 +63,10 @@ angular.module('iot', [])
                                       data: []
                                   }
                               ]
-                          };
+                          }
 
-               var ctx = document.getElementById("c").getContext("2d")
+               var ctx = document.getElementById("iot").getContext("2d")
+               console.log(ctx)
                var myLineChart = new Chart(ctx).Line(data);
 
                
@@ -75,10 +76,9 @@ angular.module('iot', [])
                        }
                    
                 }
-               
-
               }, function error (response) {
                 alert(response.data.message)
+                
               }) 
       
     }
