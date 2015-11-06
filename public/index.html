@@ -10,32 +10,35 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 
     <script src="app.js"></script>
+  
     <link rel="stylesheet" href="todo.css">
     </head>
       <body>
       <center><h2>Internet Of Things</h2></center>
         <div ng-controller="IotController as scope">
         <div ng-init="scope.query()">
-        <canvas id="iot" class="col-sm-10 col-sm-offset-1" width="200" height="100"
-			style="border:5px solid grey;">
-		</canvas>
           <form class="col-sm-4" ng-submit ="scope.insert(value)">
      		<div class="form-group">
-         Iot_ID  <br><input type="text" class="form-control" ng-model ="value.iot_id" placeholder="Type here."><br>
-         Temperature  <br><input type="text" class="form-control" ng-model ="value.temperature" placeholder="Type here."><br>
-         Relative_Humidity  <br><input type="text" class="form-control" ng-model ="value.relative_Humidity" placeholder="Type here."><br><button type="submit" class="btn btn-success">Insert</button>
+         <label >Iot_ID </label> <br><input type="text" class="form-control" ng-model ="value.iot_id" placeholder="Type here." required><br>
+         <label >Temperature </label> <br><input type="text" class="form-control" ng-model ="value.temperature"placeholder="Type here." required><br>
+         <label >Relative_Humidity </label> <br><input type="text" class="form-control" ng-model ="value.relative_humidity" placeholder="Type here." required><br><button type="submit" class="btn btn-success">Insert</button>
           </div>        
           </form>	
+          <div class="col-sm-2 col-sm-offset-6">
+           <label>Search: <input class="form-control" ng-model="searchText">
+           </label>
+           <button ng-click ="scope.graph()" class=" btn btn-info glyphicon glyphicon-stats ">Report</button>
+           </div>
 		<table class="table table-hover">
 		<tr>
-		<td>#No</td>
-		<td>Iot_ID</td>
-		<td>Temperature</td>
-		<td>Relative_Humidity</td>
-		<td>Date</td>
-		<td>Delete</td>
+		<th class="col-sm-1">#No</th>
+		<th class="col-sm-2">Iot_ID</th>
+		<th class="col-sm-2">Temperature</th>
+		<th class="col-sm-2">Relative_humidity</th>
+		<th class="col-sm-4">Date</th>
+		<th class="col-sm-1">Delete</th>
 		</tr>
-		<tr ng-repeat="data in scope.data">
+		<tr ng-repeat="data in scope.data | filter:searchText as data">
 						<td class="col-sm-1">{{$index+1}}</td>
 			    		<td class="col-sm-2">{{data.iot_id}}</td>
 			    		<td class="col-sm-2">{{data.temperature}}</td>
@@ -43,9 +46,8 @@
 			    		<td class="col-sm-4">{{scope.toTime(data.timestamp)}}</td>
 			    		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="scope.delete(data._id,$index)"></button></td>	
 				  	</tr>
-			    </tbody>
 			  </table>
-			  <button ng-click ="scope.graph()" >GRAPH</button>
+			 
 
 		
 

@@ -6,13 +6,14 @@ angular.module('iot', [])
           .then(function success (response) {
             alert('Success')
             scope.query()
-            value.iot_id = value.temperature = value.relative_Humidity = []
+            value.iot_id = value.temperature = value.relative_humidity = []
           }, function error (response) {
             alert(response.data.message)
             	})
 
       }
    	scope.query = function () {
+
  			$http.get('/api/iot').success(function (response) {
  				console.log(response)
  				scope.data = response
@@ -58,16 +59,12 @@ angular.module('iot', [])
         }
                               ]
                           }
-
                var ctx = document.getElementById("iot").getContext("2d")
                var myBarChart = new Chart(ctx).Bar(data)
 
-  
-
-               
                   for(var i = 0;i<response.data.length;i++){
                     if (response.data[i].iot_id==0){
-                         myBarChart.addData([response.data[i].temperature, response.data[i].relative_humidity] ,scope.toTime(response.data[i].timestamp))
+                         myBarChart.addData([response.data[i].temperature, response.data[i].relative_Humidity] ,scope.toTime(response.data[i].timestamp))
                        }
                    
                 }

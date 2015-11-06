@@ -4,6 +4,6 @@ var iot = new mongoose.Schema({
   timestamp: {type: Date, default: Date.now},
   iot_id: Number,
   temperature: Number,
-  relative_Humidity: Number
+  relative_humidity: Number
 })
 module.exports = restful.model('iot', iot)
