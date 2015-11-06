@@ -216,7 +216,7 @@ angular.module('iot', [])
 
                var myLineChart = new Chart(ctx).Bar(data);
 
-                for(var s = 0;s<9;s++){
+                for(var s = 0;s<=9;s++){
                       var max = 0;
                       var sum = 0;
                       var count = 0;
