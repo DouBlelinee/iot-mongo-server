@@ -11,19 +11,23 @@
     <link rel="stylesheet" href="todo.css">
     </head>
       <body>
-      <center><h2>Register</h2></center>
+      <center><h2>Login</h2></center>
         <div ng-controller="IotController as scope">
-     		<form class="col-sm-4 col-sm-offset-4" ng-submit ="scope.regis(valueregis)">
+     		<form class="col-sm-4 col-sm-offset-4" ng-submit ="scope.login(valuelogin)">
         <div class="form-group">
-         <label >Name </label> <br><input type="text" class="form-control" ng-model ="valueregis.name" placeholder="Type here." required><br>
-         <label >Surname </label> <br><input type="text" class="form-control" ng-model ="valueregis.surname"placeholder="Type here." required><br>
-         <label >Username </label> <br><input type="text" class="form-control" ng-model ="valueregis.username" placeholder="Type here." required><br>
-             <label >Password </label> <br><input type="password" class="form-control" ng-model ="valueregis.password" placeholder="Type here." required><br>
+         <label >Username </label> <br><input type="text" class="form-control" ng-model ="valuelogin.username" placeholder="Type here." required><br>
+             <label >Password </label> <br><input type="password" class="form-control" ng-model ="valuelogin.password" placeholder="Type here." required><br>
          <button type="submit" class="btn btn-success">Submit</button>
-         <button ng-click ="scope.gologin()" class=" btn btn-primary glyphicon glyphicon-user ">Login</button>
+         <button ng-click ="scope.goregis()" class=" btn btn-primary  glyphicon glyphicon-user ">Register</button>
          <button ng-click ="scope.gohome()" class=" btn btn-primary  glyphicon glyphicon-home ">Home_Iot</button>
-          </div>        
+         
+          </div>     
           </form> 
+          <div class="col-sm-2 col-sm-offset-2 alert alert-success" role="alert">Username : admin<br> 
+                  Password : admin
+          </div>
+
+          
           
            </div> 
       </body>

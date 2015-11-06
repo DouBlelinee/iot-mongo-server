@@ -1,7 +1,7 @@
 angular.module('iot', [])
       .controller('IotController', function ($http) {
         var scope = this
-        scope.name = 'Chai'
+        scope.name = 'vvvv'
     scope.insert = function (value) {
         $http.post('/api/iot', value)
           .then(function success (response) {
@@ -13,25 +13,62 @@ angular.module('iot', [])
             	})
 
       }
-      scope.regis = function (valueregis) {
+    scope.regis = function (valueregis) {
       	console.log(valueregis)
         $http.post('/apires/register', valueregis)
           .then(function success (response) {
-            alert('Success')
-            //value.iot_id = value.temperature = value.relative_humidity = []
+            alert('Register Success')
+           window.location = 'login.html'
+            valueregis.name = valueregis.surname = valueregis.username = valueregis.password = []
           }, function error (response) {
             alert(response.data.message)
             	})
 
       }
+      scope.login = function(valuelogin){
+      console.log(valuelogin)
+      $http. get('/apires/register' , { username : valuelogin.username ,password : valuelogin.password})
+       .then(function success (response) {
+       	console.log(response)
+            for(var i = 0;i < response.data.length;i++){
+            if(response.data[i].username === valuelogin.username && response.data[i].password === valuelogin.password ){
+              window.location = 'report.html'
+         
+            }else  console.log('')
+            }
+            
+            valuelogin.username = valuelogin.password = [] 
+         })
+
+    }
    	scope.query = function () {
 
  			$http.get('/api/iot').success(function (response) {
+ 				//console.log(response)
+ 				scope.data = response
+    	
+
+    })
+
+ 		}
+ 	scope.querymember = function () {
+
+ 			$http.get('/apires/register').success(function (response) {
  				console.log(response)
  				scope.data = response
     	
 
     })
+ 			
+ 		}
+ 		scope.gologin = function () {
+ 			window.location = 'login.html'
+ 		}
+ 		scope.gohome = function () {
+ 			window.location = 'index.html'
+ 		}
+ 		scope.goregis = function () {
+ 			window.location = 'register.html'
  		}
  		scope.toTime = function(date){
     return moment(date).format('MMMM Do YYYY , h:mm:ss a')
@@ -46,8 +83,8 @@ angular.module('iot', [])
             console.log('Error: ' + data)
           })
     }
-    	scope.goreport = function(){
-    window.location = 'report.html'
+    scope.goreport = function(){
+    window.location = 'register.html'
 }
     scope.graphtemp = function(){
              
