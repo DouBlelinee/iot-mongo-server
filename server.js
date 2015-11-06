@@ -36,5 +36,7 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html')
 })
 app.use('/api', require('./routes/api'))
+app.use('/', require('./routes/login'))
+
 app.listen(3000)
 console.log('run in 3000')
