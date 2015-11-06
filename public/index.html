@@ -4,51 +4,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
-
-    <script src="app.js"></script>
-  
-    <link rel="stylesheet" href="todo.css">
-    </head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="app.js"></script>  
+  </head>
       <body>
       <center><h2>Internet Of Things</h2></center>
         <div ng-controller="IotController as scope">
         <div ng-init="scope.query()">
           <form class="col-sm-4" ng-submit ="scope.insert(value)">
      		<div class="form-group">
-         <label >Iot_ID </label> <br><input type="text" class="form-control" ng-model ="value.iot_id" placeholder="Type here." required><br>
-         <label >Temperature </label> <br><input type="text" class="form-control" ng-model ="value.temperature"placeholder="Type here." required><br>
-         <label >Relative_Humidity </label> <br><input type="text" class="form-control" ng-model ="value.relative_humidity" placeholder="Type here." required><br><button type="submit" class="btn btn-success">Insert</button>
-          </div>        
+          <label >Iot_ID </label> <br><input type="text" class="form-control" ng-model ="value.iot_id" placeholder="Type here." required><br>
+          <label >Temperature </label> <br><input type="text" class="form-control" ng-model ="value.temperature"placeholder="Type here." required><br>
+          <label >Relative_Humidity </label> <br><input type="text" class="form-control" ng-model ="value.relative_humidity" placeholder="Type here." required><br><button type="submit" class="btn btn-success">Insert</button>
+        </div>        
           </form>	
-          <div class="col-sm-2 col-sm-offset-6">
+        <div class="col-sm-2 col-sm-offset-6">
            <label>Search By Iot_ID <input class="form-control" ng-model="searchText">
            </label>
-           <button ng-click ="scope.goreport()" class=" btn btn-info glyphicon glyphicon-stats ">Report</button>
-           </div>
+           <button ng-click ="scope.goregis()" class=" btn btn-info glyphicon glyphicon-stats ">Report</button>
+        </div>
 		<table class="table table-hover">
-		<tr>
-		<th class="col-sm-1">#No</th>
-		<th class="col-sm-2">Iot_ID</th>
-		<th class="col-sm-2">Temperature</th>
-		<th class="col-sm-2">Relative_humidity</th>
-		<th class="col-sm-4">Date</th>
-		<th class="col-sm-1">Delete</th>
-		</tr>
-		<tr ng-repeat="data in scope.data | filter:{ iot_id: searchText }">
-						<td class="col-sm-1">{{$index+1}}</td>
-			    		<td class="col-sm-2">{{data.iot_id}}</td>
-			    		<td class="col-sm-2">{{data.temperature}}</td>
-			    		<td class="col-sm-2">{{data.relative_humidity}}</td>
-			    		<td class="col-sm-4">{{scope.toTime(data.timestamp)}}</td>
-			    		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="scope.delete(data._id,$index)"></button></td>	
-				  	</tr>
-			  </table>		
-           </div> 
-           </div>
+		  <tr>
+		      <th class="col-sm-1">#No</th>
+		      <th class="col-sm-2">Iot_ID</th>
+		      <th class="col-sm-2">Temperature</th>
+		      <th class="col-sm-2">Relative_humidity</th>
+		      <th class="col-sm-4">Date</th>
+		      <th class="col-sm-1">Delete</th>
+		  </tr>
+		  <tr ng-repeat="data in scope.data | filter:{ iot_id: searchText }">
+					<td class="col-sm-1">{{$index+1}}</td>
+			    <td class="col-sm-2">{{data.iot_id}}</td>
+			    <td class="col-sm-2">{{data.temperature}}</td>
+			    <td class="col-sm-2">{{data.relative_humidity}}</td>
+			    <td class="col-sm-4">{{scope.toTime(data.timestamp)}}</td>
+			    <td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="scope.delete(data._id,$index)"></button></td>	
+			</tr>
+		</table>		
+          </div> 
+        </div>
       </body>
  </html>
 
