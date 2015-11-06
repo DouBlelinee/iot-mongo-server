@@ -13,6 +13,17 @@ angular.module('iot', [])
             	})
 
       }
+      scope.regis = function (valueregis) {
+      	console.log(valueregis)
+        $http.post('/apires/register', valueregis)
+          .then(function success (response) {
+            alert('Success')
+            //value.iot_id = value.temperature = value.relative_humidity = []
+          }, function error (response) {
+            alert(response.data.message)
+            	})
+
+      }
    	scope.query = function () {
 
  			$http.get('/api/iot').success(function (response) {

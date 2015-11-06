@@ -1,9 +1,9 @@
 var restful = require('node-restful')
 var mongoose = restful.mongoose
-var login = new mongoose.Schema({
+var regis = new mongoose.Schema({
   name: String,
   surname: String,
   username: String,
   password: String
 })
-module.exports = restful.model('login', login)
+module.exports = restful.model('regis', regis)
