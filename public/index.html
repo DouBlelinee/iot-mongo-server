@@ -16,6 +16,7 @@
       <body>
       <center><h2>Internet Of Things</h2></center>
         <div ng-controller="IotController as scope">
+        {{scope.name}}
         <div ng-init="scope.query()">
           <form class="col-sm-4" ng-submit ="scope.insert(value)">
      		<div class="form-group">
@@ -25,9 +26,9 @@
           </div>        
           </form>	
           <div class="col-sm-2 col-sm-offset-6">
-           <label>Search: <input class="form-control" ng-model="searchText">
+           <label>Search By Iot_ID: <input class="form-control" ng-model="searchText">
            </label>
-           <button ng-click ="scope.graph()" class=" btn btn-info glyphicon glyphicon-stats ">Report</button>
+           <button ng-click ="scope.goreport()" class=" btn btn-info glyphicon glyphicon-stats ">Report</button>
            </div>
 		<table class="table table-hover">
 		<tr>
@@ -38,7 +39,7 @@
 		<th class="col-sm-4">Date</th>
 		<th class="col-sm-1">Delete</th>
 		</tr>
-		<tr ng-repeat="data in scope.data | filter:searchText as data">
+		<tr ng-repeat="data in scope.data | filter:{ iot_id: searchText }">
 						<td class="col-sm-1">{{$index+1}}</td>
 			    		<td class="col-sm-2">{{data.iot_id}}</td>
 			    		<td class="col-sm-2">{{data.temperature}}</td>
@@ -46,18 +47,7 @@
 			    		<td class="col-sm-4">{{scope.toTime(data.timestamp)}}</td>
 			    		<td class="col-sm-1"><button class="btn btn-danger glyphicon glyphicon-trash " ng-click="scope.delete(data._id,$index)"></button></td>	
 				  	</tr>
-			  </table>
-			 
-
-		
-
-
-</body>
-</html>
-
-
-			</tr>
-		</table>
+			  </table>		
            </div> 
            </div>
       </body>
